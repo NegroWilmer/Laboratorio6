@@ -1,0 +1,53 @@
+@startuml
+
+abstract class Vehiculo {
+#placa: int
+#marca: String
+#velocidadMaxima: Double
+{abstract} +mover()
+{abstract} +calcularPeaje(): Double
+
+
+}
+
+class Auto{
+-numeroPuertas: int
++mover()
++calcularPeaje(): Double
+
+}
+
+
+class Moto{
+-tipo: TipoMoto
++mover()
++calcularPeaje(): Double
++getTipo(): TipoMoto
+
+
+}
+
+class Camion{
+-capacidadCarga: Double
++mover()
++calcularPeaje(): Double
+
+
+}
+
+
+Enum TipoMoto{
+DEPORTIVA
+CRUISER
+SCOOTER
+}
+
+'Relaciones
+
+Moto "1" *-- "1" TipoMoto : Tiene un 
+Vehiculo <|--  Auto : Es un
+Vehiculo <|--  Moto : Es un
+Vehiculo <|--  Camion : Es un
+
+
+@enduml
