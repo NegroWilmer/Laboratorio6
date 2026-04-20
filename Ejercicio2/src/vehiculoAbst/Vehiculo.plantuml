@@ -1,53 +1,50 @@
-@startuml
+startuml
 
 abstract class Vehiculo {
-#placa: int
-#marca: String
-#velocidadMaxima: Double
-{abstract} +mover()
-{abstract} +calcularPeaje(): Double
-
-
+    # placa: int
+    # marca: String
+    # velocidadMaxima: Double
+    
+    + Vehiculo(placa: int, marca: String, velocidadMaxima: Double)
+    {abstract} + mover()
+    {abstract} + calcularPeaje(): Double
 }
 
-class Auto{
--numeroPuertas: int
-+mover()
-+calcularPeaje(): Double
-
+class Auto {
+    - numeroPuertas: int
+    
+    + Auto(placa: int, marca: String, velocidadMaxima: Double, numeroPuertas: int)
+    + mover()
+    + calcularPeaje(): Double
 }
 
-
-class Moto{
--tipo: TipoMoto
-+mover()
-+calcularPeaje(): Double
-+getTipo(): TipoMoto
-
-
+class Moto {
+    - tipo: TipoMoto
+    
+    + Moto(placa: int, marca: String, velocidadMaxima: Double, tipo: TipoMoto)
+    + mover()
+    + calcularPeaje(): Double
+    + getTipo(): TipoMoto
 }
 
-class Camion{
--capacidadCarga: Double
-+mover()
-+calcularPeaje(): Double
-
-
+class Camion {
+    - capacidadCarga: Double
+    
+    + Camion(placa: int, marca: String, velocidadMaxima: Double, capacidadCarga: Double)
+    + mover()
+    + calcularPeaje(): Double
 }
 
-
-Enum TipoMoto{
-DEPORTIVA
-CRUISER
-SCOOTER
+enum TipoMoto {
+    DEPORTIVA
+    CRUISER
+    SCOOTER
 }
 
-'Relaciones
-
-Moto "1" *-- "1" TipoMoto : Tiene un 
-Vehiculo <|--  Auto : Es un
-Vehiculo <|--  Moto : Es un
-Vehiculo <|--  Camion : Es un
-
+' Relaciones
+Moto "1" *-- "1" TipoMoto
+Vehiculo <|-- Auto
+Vehiculo <|-- Moto
+Vehiculo <|-- Camion
 
 @enduml
